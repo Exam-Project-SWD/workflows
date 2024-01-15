@@ -50,6 +50,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Checkout README file
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            ${{ inputs.readme }}
+          sparse-checkout-cone-mode: false
+
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
         with:
